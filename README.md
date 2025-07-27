@@ -170,11 +170,19 @@ npm install
 Crea un archivo `.env` basado en `.env.example`:
 
 ```env
-DATABASE_URL="postgresql://usuario:password@localhost:5432/financial_db"
-NEXTAUTH_SECRET="tu-clave-secreta-muy-segura"
-NEXTAUTH_URL="http://localhost:3000"
-GITHUB_CLIENT_ID="tu-github-client-id"
-GITHUB_CLIENT_SECRET="tu-github-client-secret"
+# 🔗 Supabase PostgreSQL (reemplaza la base local en producción)
+DATABASE_URL="postgresql://<USERNAME>:<PASSWORD>@<HOST>:<PORT>/<DATABASE_NAME>"
+
+# 🛡️ NextAuth.js configuración
+NEXTAUTH_SECRET="<GENERATE_A_SECURE_SECRET>"
+NEXTAUTH_URL="http://localhost:3000" # o tu dominio de producción
+
+# 🔐 GitHub OAuth para autenticación con NextAuth
+GITHUB_CLIENT_ID="<YOUR_GITHUB_CLIENT_ID>"
+GITHUB_CLIENT_SECRET="<YOUR_GITHUB_CLIENT_SECRET>"
+
+# 💾 (Opcional) base de datos local para entorno de desarrollo
+LOCAL_DATABASE_URL="postgresql://<USERNAME>:<PASSWORD>@localhost:5432/<DATABASE_NAME>"
 ```
 
 ### Paso 3: Configurar GitHub OAuth
@@ -260,11 +268,19 @@ La documentación completa de la API está disponible en:
 
 2. **Configurar variables de entorno en Vercel**:
    ```
-   DATABASE_URL=postgresql://...
-   NEXTAUTH_SECRET=clave-secreta-para-produccion
-   NEXTAUTH_URL=https://tu-dominio.vercel.app
-   GITHUB_CLIENT_ID=tu-client-id
-   GITHUB_CLIENT_SECRET=tu-client-secret
+   # 🔗 Supabase PostgreSQL (reemplaza la base local en producción)
+DATABASE_URL="postgresql://<USERNAME>:<PASSWORD>@<HOST>:<PORT>/<DATABASE_NAME>"
+
+# 🛡️ NextAuth.js configuración
+NEXTAUTH_SECRET="<GENERATE_A_SECURE_SECRET>"
+NEXTAUTH_URL="http://localhost:3000" # o tu dominio de producción
+
+# 🔐 GitHub OAuth para autenticación con NextAuth
+GITHUB_CLIENT_ID="<YOUR_GITHUB_CLIENT_ID>"
+GITHUB_CLIENT_SECRET="<YOUR_GITHUB_CLIENT_SECRET>"
+
+# 💾 (Opcional) base de datos local para entorno de desarrollo
+LOCAL_DATABASE_URL="postgresql://<USERNAME>:<PASSWORD>@localhost:5432/<DATABASE_NAME>"
    ```
 
 3. **Actualizar callback de GitHub**:
