@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "next.config.js", "use": "@vercel/next" }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH"]
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "@DATABASE_URL",
+    "NEXTAUTH_SECRET": "@NEXTAUTH_SECRET",
+    "NEXTAUTH_URL": "@NEXTAUTH_URL",
+    "GITHUB_CLIENT_ID": "@GITHUB_CLIENT_ID",
+    "GITHUB_CLIENT_SECRET": "@GITHUB_CLIENT_SECRET"
+  }
+}
