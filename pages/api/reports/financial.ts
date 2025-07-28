@@ -44,14 +44,20 @@ const transactionUseCases = new TransactionUseCases(transactionRepository);
  *                     $ref: '#/components/schemas/Transaction'
  *       401:
  *         description: No autorizado
-*             examples:
- *              noAuth:
- *                 value: { error: "No autorizado" }
+ *         content:
+ *           application/json:
+ *             examples:
+ *               noAuth:
+ *                 value:
+ *                   error: "No autorizado"
  *       403:
  *         description: Permisos insuficientes
-*             examples:
+ *         content:
+ *           application/json:
+ *             examples:
  *               forbidden:
- *                 value: { error: "Acceso denegado: se requiere rol administrador" }
+ *                 value:
+ *                   error: "Acceso denegado: se requiere rol administrador"
  */
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const session = await getServerSession(req, res, authOptions);
